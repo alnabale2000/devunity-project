@@ -10,8 +10,8 @@ const {
 
 const sequelize=new Sequelize(DB_NAME,DB_USERNAME,DB_PASS,{
     host:DB_HOST,
-    "dialect": "mysql",
-    "port": DB_PORT,
+    dialect: "mysql",
+    port: DB_PORT,
     define:{
         timestamps:true,
         freezeTableName:true
@@ -21,6 +21,14 @@ const sequelize=new Sequelize(DB_NAME,DB_USERNAME,DB_PASS,{
 
 db.sequelize=sequelize;
 
-db.tblUser= require('./models/user')(sequelize,Sequelize)
+db.user= require('./models/user')(sequelize,Sequelize)
+db.language=require('./models/language')(sequelize,Sequelize)
+db.article=require('./models/article/article')(sequelize,Sequelize)
+db.articleCm=require('./models/article/article-comment')(sequelize,Sequelize)
+db.post=require('./models/post/post')(sequelize,Sequelize)
+db.postCm=require('./models/post/post-comment')(sequelize,Sequelize)
+db.QS=require('./models/Q&A/question')(sequelize,Sequelize)
+db.answer=require('./models/Q&A/answer')(sequelize,Sequelize)
+
 
 module.exports=db

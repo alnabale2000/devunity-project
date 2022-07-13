@@ -16,13 +16,13 @@ module.exports=(sequelize,DataTypes)=>{
         strPassword:{
             type:DataTypes.STRING
         },
-        blnIsActive:{
-            type:DataTypes.BOOLEAN,
-            defaultValue:0
+        strProfileImage:{
+            type:DataTypes.STRING
         },
-        dtmDOB: {
-            type: DataTypes.DATE
+        intPoints:{
+            type:DataTypes.INTEGER
         },
+        strLanguagesIDs:DataTypes.STRING,
     })
     User.sync();
     return User
