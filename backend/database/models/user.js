@@ -20,7 +20,8 @@ module.exports=(sequelize,DataTypes)=>{
             type:DataTypes.STRING
         },
         intPoints:{
-            type:DataTypes.INTEGER
+            type:DataTypes.INTEGER,
+            defaultValue:0
         },
         strLanguagesIDs:DataTypes.STRING,
     })

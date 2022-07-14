@@ -33,10 +33,9 @@ exports.UserQueries=`
 `
 
 exports.UserMutation=`
-addUser(userInput:UserInput):User
-sendContactMail(strName:String,strEmail:String,strMsg:String):String
-updateUser(strProfileImage:String,strName:String):User
-updateUserPoints(intUserID:Int,intPoints:Int):String
+    createNewAccount(userInput:UserInput):User
+    sendMail(strEmail:String,strMsg:String):String
+    updateUser(intUserID:Int,strProfileImage:String,strName:String):String
+    updateUserPoints(intUserID:Int,newPoints:Int):String
 `
 
-//loginUser(strEmail:String!,strPassword:String!):String!

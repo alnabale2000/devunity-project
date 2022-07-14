@@ -7,7 +7,8 @@ type Language {
 `
 
 exports.LanguageQueries=`
-    getLanguagesByUserID(intUserID:Int!):[Language]!
+    getLanguagesByUserID(intUserID:Int!):[Language!]!
+    getAllLanguages:[Language!]!
 `
 
 exports.LanguageMutation=`
