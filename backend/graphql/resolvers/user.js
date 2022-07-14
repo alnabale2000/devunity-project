@@ -2,13 +2,13 @@ const Sequelize=require('sequelize')
 const db=require('../../database/db')
 const Op = Sequelize.Op
 const tblUser=db.tblUser
-const article=db.article
+const tblArticle=db.tblArticle
 
 module.exports={
     getUserByID:async(args,req)=>{
         try {
             const user=await tblUser.findOne({ where: { intUserID: args.intUserID } })
-            const articles=await article.findAll({
+            const articles=await tblArticle.findAll({
                 where:{
                     intAuthorId:args.intUserID
                 }

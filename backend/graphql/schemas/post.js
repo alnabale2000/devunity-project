@@ -24,6 +24,7 @@ exports.PostQueries=`
     getPostsForMultipleLanguage(strUserLanguages:String):[Post!]!
     getPostsByLanguageID(intLanguageID:Int):[Post!]!
     getPostComments(intPostID:Int):[PostComment!]!
+    getPostsByUserId(intUserID:Int):[Post!]!
 `
 
 exports.PostMutation=`

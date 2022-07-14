@@ -9,6 +9,8 @@ type User {
     intPoints:Int,
     strLanguagesIDs:String,
     articles:[Article] 
+    posts:[Post]
+    questions:[Question]
 }
 `
 
