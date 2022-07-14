@@ -7,6 +7,7 @@ module.exports=(sequelize,DataTypes)=>{
             type: DataTypes.INTEGER
         },
         intCommenterID:DataTypes.INTEGER,
+        QSId:DataTypes.INTEGER,
         strAnswerBody:{
             type:DataTypes.STRING
         },

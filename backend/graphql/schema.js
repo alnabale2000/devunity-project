@@ -13,12 +13,14 @@ module.exports= buildSchema(
 
         ${articleSchema.Article}
         ${articleSchema.ArticleComment}
+        ${articleSchema.ArticleInput}
 
         ${postSchema.Post}
         ${postSchema.PostComment}
 
         ${questionSchema.Question}
         ${questionSchema.Answer}
+        ${questionSchema.QuestionInput}
 
         ${languageSchema.Language}
 

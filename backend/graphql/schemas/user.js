@@ -27,12 +27,14 @@ input UserInput {
 exports.UserQueries=`
     countUsers:Int!
     getUserByID(intUserID:Int!):User!
-    
+    loginUser(strEmail:String!,strPassword:String!):String!
 `
 
 exports.UserMutation=`
 addUser(userInput:UserInput):User
-updateUser(userInput:UserInput):User
+sendContactMail(strName:String,strEmail:String,strMsg:String):String
+updateUser(strProfileImage:String,strName:String):User
+updateUserPoints(intUserID:Int,intPoints:Int):String
 `
 
 //loginUser(strEmail:String!,strPassword:String!):String!

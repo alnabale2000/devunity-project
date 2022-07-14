@@ -1,12 +1,16 @@
 const userResolver=require('./resolvers/user')
-const ArticleResolver=require('./resolvers/article')
-const PostResolver=require('./resolvers/post')
+const articleResolver=require('./resolvers/article')
+const postResolver=require('./resolvers/post')
 const questionResolver=require('./resolvers/question')
-const LanguageResolver=require('./resolvers/language')
+const languageResolver=require('./resolvers/language')
 
 
 const rootResolver={
     ...userResolver,
+    ...articleResolver,
+    ...postResolver,
+    ...questionResolver,
+    ...languageResolver
 }
 
 module.exports=rootResolver

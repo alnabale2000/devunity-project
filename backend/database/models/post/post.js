@@ -10,7 +10,7 @@ module.exports=(sequelize,DataTypes)=>{
         intAuthorId:DataTypes.INTEGER,
         intLikesCount:DataTypes.INTEGER,
         strLikesIDs:DataTypes.STRING,
-        strLanguageID:DataTypes.INTEGER,
+        intLanguageID:DataTypes.INTEGER,
     })
     Post.sync();
     return Post

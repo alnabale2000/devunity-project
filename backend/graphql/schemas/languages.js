@@ -7,9 +7,9 @@ type Language {
 `
 
 exports.LanguageQueries=`
-
+    getLanguagesByUserID(intUserID:Int!):[Language]!
 `
 
 exports.LanguageMutation=`
-
+    updateLanguagesByUserId(intUserID:Int,strLanguagesIDs:String):String
 `

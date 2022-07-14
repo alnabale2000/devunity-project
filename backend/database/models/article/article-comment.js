@@ -7,6 +7,7 @@ module.exports=(sequelize,DataTypes)=>{
             type: DataTypes.INTEGER
         },
         intCommenterID:DataTypes.INTEGER,
+        articleId:DataTypes.INTEGER,
         strBody:DataTypes.STRING,
     })
     ArticleComment.sync();
