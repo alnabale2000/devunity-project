@@ -11,6 +11,8 @@ module.exports=(sequelize,DataTypes)=>{
         intAuthorId:DataTypes.INTEGER,
         intLikesCount:DataTypes.INTEGER,
         strLikesIDs:DataTypes.STRING,
+        strLanguagesIDs:DataTypes.STRING,
+
     })
     Article.sync();
     return Article

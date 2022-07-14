@@ -13,7 +13,7 @@ const sequelize=new Sequelize(DB_NAME,DB_USERNAME,DB_PASS,{
     dialect: "mysql",
     port: DB_PORT,
     define:{
-        timestamps:true,
+        timestamps:false,
         freezeTableName:true
     },
     
@@ -21,7 +21,7 @@ const sequelize=new Sequelize(DB_NAME,DB_USERNAME,DB_PASS,{
 
 db.sequelize=sequelize;
 
-db.user= require('./models/user')(sequelize,Sequelize)
+db.tblUser= require('./models/user')(sequelize,Sequelize)
 db.language=require('./models/language')(sequelize,Sequelize)
 db.article=require('./models/article/article')(sequelize,Sequelize)
 db.articleCm=require('./models/article/article-comment')(sequelize,Sequelize)

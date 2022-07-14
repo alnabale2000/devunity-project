@@ -8,7 +8,6 @@ module.exports=(sequelize,DataTypes)=>{
         },
         intCommenterID:DataTypes.INTEGER,
         strBody:DataTypes.STRING,
-        intAuthorId:DataTypes.INTEGER,
     })
     PostComment.sync();
     return PostComment
