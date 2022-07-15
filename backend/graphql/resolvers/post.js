@@ -2,7 +2,6 @@ const Sequelize=require('sequelize')
 const db=require('../../database/db')
 const Op = Sequelize.Op
 const tblPost=db.tblPost
-
 module.exports={
     countPosts:async(args,req)=>{
         try {
@@ -10,5 +9,14 @@ module.exports={
         } catch (error) {
             throw (error)
         }
+    },
+
+    getPostsByLanguageID:async (args)=>{
+        const intLanguageID=args.intLanguageID;
+        return await tblPost.findAll({
+            where:{
+                intLanguageID
+            }
+        })
     }
 }

@@ -30,7 +30,7 @@ input ArticleInput {
 
 exports.ArticleQueries=`
     countArticles:Int!
-    getArticlesByLanguageID(intArticleID:Int):[Article!]!
+    getArticlesByLanguageID(intLanguageID:Int):[Article!]!
     getArticleById(intArticleID:Int):Article!
     getRecommendedArticles(intLanguageID:Int):[Article!]!
     getArticleComments(intArticleID:Int):[ArticleComment!]!

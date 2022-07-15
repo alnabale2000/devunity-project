@@ -31,7 +31,7 @@ input QuestionInput {
 `
 exports.QuestionQueries=`
     countQuestions:Int!
-    getQuestionsByLanguageID(intQuestionID:Int):[Question!]!
+    getQuestionsByLanguageID(intLanguageID:Int):[Question!]!
     getQuestionById(intQuestionID:Int):Question!
     getAnswers(intQuestionID:Int):[Answer!]!
     getQuestionsByUserId(intUserID:Int):[Question!]!

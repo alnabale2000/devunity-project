@@ -10,5 +10,16 @@ module.exports={
         } catch (error) {
             throw (error)
         }
+    },
+
+    getArticlesByLanguageID:async (args)=>{
+        const intLanguageID=args.intLanguageID;
+        return await tblArticle.findAll({
+            where:{
+                strLanguagesIDs:{
+                    [Op.substring]:intLanguageID
+                }
+            }
+        })
     }
 }

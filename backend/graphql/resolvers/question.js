@@ -10,5 +10,16 @@ module.exports={
         } catch (error) {
             throw (error)
         }
+    },
+
+    getQuestionsByLanguageID:async (args)=>{
+        const intLanguageID=args.intLanguageID;
+        return await tblQS.findAll({
+            where:{
+                strLanguagesIDs:{
+                    [Op.substring]:intLanguageID
+                }
+            }
+        })
     }
 }
