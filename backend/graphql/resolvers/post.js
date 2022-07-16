@@ -72,5 +72,38 @@ module.exports={
             postsCm[index].commenter=user.dataValues
         }
         return postsCm
+    },
+    getPostsByUserId:async(args)=>{
+        const intUserID=args.intUserID;
+        return await tblPost.findAll({
+            where:{
+                intAuthorId:intUserID
+            }
+        })
+    },
+
+    addLikeOnPost:async(args)=>{
+        const {intPostID,intUserID}=args
+        const post=await tblPost.findOne({
+            attributes:['strLikesIDs','intLikesCount'],
+            where:{
+                intPostID
+            }
+        })
+        const postLikeIDs=post.strLikesIDs.split(' ,').map((item) => {
+            return parseInt(item)
+        });
+        if(!postLikeIDs.includes(intUserID)){
+            const newLikesCount=post.intLikesCount + 1
+            const newLikesIDs=post.strLikesIDs + `${intUserID} ,`
+            await tblPost.update(
+                {strLikesIDs:newLikesIDs,intLikesCount:newLikesCount},
+                {where:{intPostID}}
+                )
+            return "done"
+        }else{
+            return "Can't Add More than 1 like"
+        }
+
     }
 }

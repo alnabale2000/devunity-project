@@ -123,6 +123,37 @@ module.exports={
 
         console.log('articlesCm', articlesCm);
         return articlesCm
+    },
+    getArticlesByUserId:async(args)=>{
+        const intUserID=args.intUserID;
+        return await tblArticle.findAll({
+            where:{
+                intAuthorId:intUserID
+            }
+        })
+    },
+
+    addLikeOnArticle:async(args)=>{
+        const {intArticleID,intUserID}=args
+        const article=await tblArticle.findOne({
+            attributes:['strLikesIDs','intLikesCount'],
+            where:{
+                intArticleID
+            }
+        })
+        const articleLikeIDs=article.strLikesIDs.split(' ,').map((item) => {
+            return parseInt(item)
+        });
+        if(!articleLikeIDs.includes(intUserID)){
+            const newLikesCount=article.intLikesCount + 1
+            const newLikesIDs=article.strLikesIDs + `${intUserID} ,`
+            await tblArticle.update(
+                {strLikesIDs:newLikesIDs,intLikesCount:newLikesCount},
+                {where:{intArticleID}}
+                )
+            return "done"
+        }else{
+            return "Can't Add More than 1 like"
+        }
     }
-    
 }
