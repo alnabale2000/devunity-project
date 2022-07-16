@@ -6,6 +6,7 @@ const db=require('./database/db')
 const {mailRouter}=require('./middleware/send-mail')
 const socket = require("socket.io");
 const http = require("http"); 
+const uploadImages=require('./restful-api/upload-files')
 
 
 const app = express();
@@ -17,12 +18,14 @@ const graphQLResolver=require('./graphql/resolver')
 
 //RestApi
 app.use(mailRouter)
+app.use(uploadImages);
 
 app.use('/graphql', graphqlHTTP({
     schema:graphQLSchema,
     rootValue:graphQLResolver,
     graphiql:true,
 }));
+
 
 //Socket IO
 const server = http.createServer(app);
