@@ -16,7 +16,6 @@ type User {
 
 exports.UserInput=`
 input UserInput {
-    intUserID:Int,
     strName:String,
     strEmail:String,
     strPassword:String,
@@ -33,7 +32,7 @@ exports.UserQueries=`
 `
 
 exports.UserMutation=`
-    createNewAccount(userInput:UserInput):User
+    createNewAccount(userInput:UserInput):String
     sendMail(strEmail:String,strMsg:String):String
     updateUser(intUserID:Int,strProfileImage:String,strName:String):String
     updateUserPoints(intUserID:Int,newPoints:Int):String

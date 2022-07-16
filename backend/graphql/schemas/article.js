@@ -21,7 +21,7 @@ type ArticleComment{
 
 exports.ArticleInput=`
 input ArticleInput {
-    strLanguagesIDs:Int,
+    strLanguagesIDs:String,
     strTitle:String,
     strBody:String,
     intAuthorId:Int,
@@ -39,6 +39,6 @@ exports.ArticleQueries=`
 
 exports.ArticleMutation=`
     addNewArticle(articleInput:ArticleInput):String
-    addArticleComment(strBody:String,articleId:Int,intCommenterID:Int):String
-
+    addArticleComment(strBody:String,intArticleID:Int,intCommenterID:Int):String
+    addLikeOnArticle(intArticleID:Int,strLikesIDs:String,intLikesCount:Int,intUserID:Int):String
 `

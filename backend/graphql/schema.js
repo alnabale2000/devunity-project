@@ -21,6 +21,7 @@ module.exports= buildSchema(
         ${questionSchema.Question}
         ${questionSchema.Answer}
         ${questionSchema.QuestionInput}
+        ${questionSchema.VoteInput}
 
         ${languageSchema.Language}
 

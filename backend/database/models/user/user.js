@@ -24,6 +24,10 @@ module.exports=(sequelize,DataTypes)=>{
             defaultValue:0
         },
         strLanguagesIDs:DataTypes.STRING,
+        verified:{
+            type:DataTypes.BOOLEAN,
+            defaultValue:false
+        }
     })
     User.sync();
     return User

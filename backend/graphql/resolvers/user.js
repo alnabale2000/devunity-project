@@ -3,9 +3,11 @@ const db = require('../../database/db')
 const Op = Sequelize.Op
 const tblUser = db.tblUser
 const tblArticle = db.tblArticle
+const tblToken=db.tblToken
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const sendEMail = require('../../middleware/send-mail')
+const {sendEMail} = require('../../middleware/send-mail')
+
 
 module.exports = {
     getUserByID: async (args, req) => {
@@ -38,24 +40,39 @@ module.exports = {
 
         try {
             // check if user exist:
-            const user = await tblUser.findOne({
-                where: {
-                    strEmail: args.userInput.strEmail,
-                }
+            let user = await tblUser.findOne({
+                where: {strEmail: args.userInput.strEmail,}
             })
             if (user) {
                 throw new Error('User Already Exist')
             }
 
-            sendEMail(strEmail)
-
-            return await tblUser.create({
+            user = await tblUser.create({
                 strName,
                 strEmail,
                 strPassword: hashedPassword,
                 strProfileImage,
                 strLanguagesIDs,
             })
+            
+            const options = {
+                expiresIn: "1d",
+            };
+
+            const payload = {
+                userId: user.intUserID,
+            };
+            const strToken=jwt.sign(payload, process.env.SECRET, options)
+            const token=await tblToken.create({
+                intUserID:user.intUserID,
+                strToken
+            })
+            
+            const message = `http://localhost:4000/user/verify/${user.intUserID}/${token.strToken}`;
+
+            sendEMail(strEmail , message)
+
+            return "An Email sent to your account please verify"
         } catch (error) {
             throw error
         }

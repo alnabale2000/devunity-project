@@ -9,8 +9,14 @@ module.exports=(sequelize,DataTypes)=>{
         strTitle:DataTypes.STRING,
         strBody:DataTypes.STRING,
         intAuthorId:DataTypes.INTEGER,
-        intLikesCount:DataTypes.INTEGER,
-        strLikesIDs:DataTypes.STRING,
+        intLikesCount:{
+            type:DataTypes.INTEGER,
+            defaultValue:0
+        },
+        strLikesIDs:{
+            type:DataTypes.STRING,
+            defaultValue:" "
+        },
         strLanguagesIDs:DataTypes.STRING,
 
     })

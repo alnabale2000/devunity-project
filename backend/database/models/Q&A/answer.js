@@ -12,16 +12,20 @@ module.exports=(sequelize,DataTypes)=>{
             type:DataTypes.STRING
         },
         intUpVotesCount:{
-            type:DataTypes.INTEGER
+            type:DataTypes.INTEGER,
+            defaultValue:0
         },
         intDownVotesCount:{
-            type:DataTypes.INTEGER
+            type:DataTypes.INTEGER,
+            defaultValue:0
         },
         strUpVotesIDs:{
-            type:DataTypes.STRING
+            type:DataTypes.STRING,
+            defaultValue:" "
         },
         strDownVotesIDs:{
-            type:DataTypes.STRING
+            type:DataTypes.STRING,
+            defaultValue:" "
         },
     })
     Answer.sync();

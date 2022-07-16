@@ -23,10 +23,22 @@ type Answer{
 
 exports.QuestionInput=`
 input QuestionInput {
-    strLanguagesIDs:Int,
+    strLanguagesIDs:String,
     strTitle:String,
     strBody:String,
     intAuthorId:Int,
+}
+`
+
+exports.VoteInput=`
+input VoteInput {
+    intAnswerID:Int,
+    strUpVotesIDs:String,
+    strDownVotesIDs:String,
+    intUpVotesCount:Int,
+    intDownVotesCount:Int,
+    intUserID:Int,
+    strUpOrDown:String
 }
 `
 exports.QuestionQueries=`
@@ -41,4 +53,6 @@ exports.QuestionQueries=`
 exports.QuestionMutation=`
     addNewQuestion(questionInput:QuestionInput):String
     addAnswer(strBody:String,QSId:Int,intCommenterID:Int):String
+    addVote(voteInput:VoteInput):String
+
 `

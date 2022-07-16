@@ -29,5 +29,7 @@ exports.PostQueries=`
 
 exports.PostMutation=`
     addPost(strBody:String,intAuthorId:Int,intLanguageID:Int):String
-    addPostComment(strBody:String,postId:Int,intCommenterID:Int):String
+    addPostComment(strBody:String,intPostID:Int,intCommenterID:Int):String
+    addLikeOnPost(intPostID:Int,strLikesIDs:String,intLikesCount:Int,intUserID:Int):String
+
 `
