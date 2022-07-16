@@ -3,6 +3,9 @@ const db=require('../../database/db')
 const Op = Sequelize.Op
 const tblPost=db.tblPost
 const tblPostCm=db.tblPostCm
+const tblUser=db.tblUser
+
+
 module.exports={
     countPosts:async(args,req)=>{
         try {
@@ -52,4 +55,22 @@ module.exports={
             throw error
         }
     },
+
+    getPostComments:async(args)=>{
+        const intPostID=args.intPostID;
+        let postsCm=await tblPostCm.findAll({
+            where:{
+                intPostID
+            }
+        })
+        for(let index in postsCm){
+            const user= await tblUser.findOne({
+                where:{
+                    intUserID:postsCm[index].intCommenterID
+                }
+            })
+            postsCm[index].commenter=user.dataValues
+        }
+        return postsCm
+    }
 }

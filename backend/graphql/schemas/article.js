@@ -15,7 +15,7 @@ type ArticleComment{
     intArticleCommentID:Int,    
     strBody:String,
     commenter:User,
-    articleId:Int,
+    intArticleID:Int,
 } 
 `
 

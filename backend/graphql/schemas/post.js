@@ -15,7 +15,7 @@ type PostComment{
     intPostCommentID:Int,    
     strBody:String,
     commenter:User,
-    postId:Int,
+    intPostID:Int,
 }
 `
 

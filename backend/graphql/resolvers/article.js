@@ -102,5 +102,27 @@ module.exports={
             throw error
         }
         
+    },
+    
+    getArticleComments:async(args)=>{
+        const intArticleID=args.intArticleID;
+        let articlesCm=await tblArticleCm.findAll({
+            where:{
+                intArticleID
+            }
+        })
+        for(let index in articlesCm){
+            const user= await tblUser.findOne({
+                where:{
+                    intUserID:articlesCm[index].intCommenterID
+                }
+            })
+            articlesCm[index].commenter=user.dataValues
+
+        }
+
+        console.log('articlesCm', articlesCm);
+        return articlesCm
     }
+    
 }

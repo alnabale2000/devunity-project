@@ -76,4 +76,22 @@ module.exports={
             throw error
         }
     },
+
+    getAnswers:async(args)=>{
+        const QSId=args.intQuestionID;
+        let answers=await tblAnswer.findAll({
+            where:{
+                QSId
+            }
+        })
+        for(let index in answers){
+            const user= await tblUser.findOne({
+                where:{
+                    intUserID:answers[index].intCommenterID
+                }
+            })
+            answers[index].commenter=user.dataValues
+        }
+        return answers
+    }
 }
